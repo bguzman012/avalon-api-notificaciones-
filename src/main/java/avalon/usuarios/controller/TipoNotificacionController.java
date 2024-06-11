@@ -21,10 +21,11 @@ import java.util.List;
 public class TipoNotificacionController {
 
     private final TipoNotificacionesServiceImpl service;
+
     @GetMapping("/tiposNotificacion")
     public ResponseEntity<List<TipoNotificacion>> getTiposNotificacion() {
         List<TipoNotificacion> tiposNotificacionList = service.getTiposNotificacion();
-
+        System.out.println("");
         if (!tiposNotificacionList.isEmpty()) {
             return ResponseEntity.ok(tiposNotificacionList);
         } else {
