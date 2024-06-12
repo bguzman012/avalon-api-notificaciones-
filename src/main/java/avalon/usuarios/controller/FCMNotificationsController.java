@@ -1,7 +1,5 @@
 package avalon.usuarios.controller;
 
-import java.util.List;
-
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import avalon.usuarios.model.DTOs.NotificationMessageDTO;
 import avalon.usuarios.model.DTOs.NotificationMessageTokenDTO;
 import avalon.usuarios.model.DTOs.NotificationMessageTopicDTO;
 import avalon.usuarios.service.FCMService;
