@@ -22,8 +22,8 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     service-url:
-    #  defaultZone: ${EUREKA_URL:http://149.56.110.32:8761/eureka}
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+     defaultZone: ${EUREKA_URL:http://149.56.110.32:8761/eureka}
+      # defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
   instance:
     preferIpAddress: true
     hostname: ms-notificaciones

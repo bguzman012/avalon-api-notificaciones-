@@ -41,4 +41,3 @@ public class Notificacion extends AuditingData {
     private TipoNotificacion tipoNotificacion;
 
 }
-
