@@ -67,4 +67,10 @@ public class NotificacionController {
 
     }
 
+    @DeleteMapping("/notificaciones/{notificacionId}")
+    public ResponseEntity<Void> deleteNotificacion(@PathVariable Long notificacionId) {
+        service.deleteNotificacion(notificacionId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

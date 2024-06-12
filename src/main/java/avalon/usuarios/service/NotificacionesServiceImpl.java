@@ -62,4 +62,9 @@ public class NotificacionesServiceImpl implements NotificacionesService {
 
         return repository.save(notificacion);
     }
+
+    @Override
+    public void deleteNotificacion(Long notificacionId) {
+        this.repository.deleteById(notificacionId);
+    }
 }

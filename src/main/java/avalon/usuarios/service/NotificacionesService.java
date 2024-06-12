@@ -12,4 +12,5 @@ public interface NotificacionesService {
     Notificacion getNotificacion(Long notificacionId);
     Notificacion createNotificacion(CreateNotificacionRequest request);
     Notificacion updateNotificacion(Notificacion notificacion, UpdateNotificacionRequest request);
+    void deleteNotificacion(Long notificacionId);
 }
