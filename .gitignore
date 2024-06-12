@@ -35,3 +35,4 @@ build/
 
 # Firebase service account
 src/main/resources/firebase-service-account.json
+
