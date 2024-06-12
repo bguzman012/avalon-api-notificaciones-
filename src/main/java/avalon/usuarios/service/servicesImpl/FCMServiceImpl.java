@@ -60,9 +60,7 @@ public class FCMServiceImpl implements FCMService {
         Notification notificationFCM = buildNotification(notificacion);
 
         Message message = Message
-
                 .builder()
-
                 .setTopic(notificacion.getTopic())
                 .setNotification(notificationFCM)
                 // .putAllData()

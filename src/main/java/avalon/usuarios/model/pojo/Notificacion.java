@@ -28,6 +28,13 @@ public class Notificacion extends AuditingData {
     @Column(name = "mensaje")
     private String mensaje;
 
+    @NotNull
+    @Column(name = "usuario_envia")
+    private String usuarioEnvia;
+
+    @Column(name = "respuesta")
+    private String respuesta;
+
     @Column(name = "usuario_aseguradora_id")
     private String usuarioAseguradorId;
 

@@ -16,6 +16,8 @@ public class CreateNotificacionRequest {
 	private String asunto;
 	@NotNull
 	private String mensaje;
+	@NotNull
+	private String usuarioEnvia;
 	private String usuarioAseguradorId;
 	@NotNull
 	private Long tipoNotificacionId;
