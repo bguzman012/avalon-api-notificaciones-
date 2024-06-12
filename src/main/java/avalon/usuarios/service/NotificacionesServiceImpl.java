@@ -6,7 +6,7 @@ import avalon.usuarios.model.pojo.Notificacion;
 import avalon.usuarios.model.pojo.TipoNotificacion;
 import avalon.usuarios.model.request.CreateNotificacionRequest;
 import avalon.usuarios.model.request.UpdateNotificacionRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,12 +17,12 @@ public class NotificacionesServiceImpl implements NotificacionesService {
     private final NotificacionRepository repository;
     private final TipoNotificacionRepository tipoNotificacionRepository;
 
-    @Autowired
-    public NotificacionesServiceImpl(NotificacionRepository repository, TipoNotificacionRepository tipoNotificacionRepository) {
+    // @Autowired
+    public NotificacionesServiceImpl(NotificacionRepository repository,
+            TipoNotificacionRepository tipoNotificacionRepository) {
         this.repository = repository;
         this.tipoNotificacionRepository = tipoNotificacionRepository;
     }
-
 
     @Override
     public List<Notificacion> getNotificaciones() {
@@ -36,9 +36,11 @@ public class NotificacionesServiceImpl implements NotificacionesService {
 
     @Override
     public Notificacion createNotificacion(CreateNotificacionRequest request) {
-        TipoNotificacion tipoNotificacion = tipoNotificacionRepository.findById(request.getTipoNotificacionId()).orElse(null);
+        TipoNotificacion tipoNotificacion = tipoNotificacionRepository.findById(request.getTipoNotificacionId())
+                .orElse(null);
 
-        if (tipoNotificacion == null) return null;
+        if (tipoNotificacion == null)
+            return null;
 
         Notificacion notificacion = new Notificacion();
         notificacion.setAsunto(request.getAsunto());
@@ -51,9 +53,11 @@ public class NotificacionesServiceImpl implements NotificacionesService {
 
     @Override
     public Notificacion updateNotificacion(Notificacion notificacion, UpdateNotificacionRequest request) {
-        TipoNotificacion tipoNotificacion = tipoNotificacionRepository.findById(request.getTipoNotificacionId()).orElse(null);
+        TipoNotificacion tipoNotificacion = tipoNotificacionRepository.findById(request.getTipoNotificacionId())
+                .orElse(null);
 
-        if (tipoNotificacion == null) return null;
+        if (tipoNotificacion == null)
+            return null;
 
         notificacion.setAsunto(request.getAsunto());
         notificacion.setMensaje(request.getMensaje());

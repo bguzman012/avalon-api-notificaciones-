@@ -1,13 +1,10 @@
 package avalon.usuarios.model.pojo;
 
 import avalon.usuarios.model.auditing.AuditingData;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "notificaciones")
@@ -40,4 +37,3 @@ public class Notificacion extends AuditingData {
     private TipoNotificacion tipoNotificacion;
 
 }
-
