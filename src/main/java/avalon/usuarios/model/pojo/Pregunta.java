@@ -35,11 +35,11 @@ public class Pregunta extends AuditingData {
     private Long nivel;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "preguntaId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL)
     private List<Interaccion> preguntaInteraccionList;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "repuestaId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "respuesta", cascade = CascadeType.ALL)
     private List<Interaccion> respuestaInteraccionList;
 
 }

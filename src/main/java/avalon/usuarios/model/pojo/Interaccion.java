@@ -22,11 +22,11 @@ public class Interaccion extends AuditingData {
     @ManyToOne
     @NotNull
     @JoinColumn(name = "pregunta_id")
-    private Pregunta preguntaId;
+    private Pregunta pregunta;
 
     @ManyToOne
     @NotNull
-    @JoinColumn(name = "repuestaId")
-    private Pregunta respuestaId;
+    @JoinColumn(name = "repuesta_id")
+    private Pregunta respuesta;
 
 }
