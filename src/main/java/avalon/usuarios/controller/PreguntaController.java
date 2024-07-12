@@ -100,6 +100,7 @@ public class PreguntaController {
             preguntaReference.setPadre(null);
         }
         preguntaReference.setContenido(request.getContenido());
+        preguntaReference.setRespuesta(request.getRespuesta());
         preguntaReference.setNivel(request.getNivel());
 
         return preguntaReference;

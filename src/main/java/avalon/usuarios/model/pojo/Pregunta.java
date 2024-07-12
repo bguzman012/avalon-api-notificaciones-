@@ -27,6 +27,9 @@ public class Pregunta extends AuditingData {
     @Column(name = "contenido")
     private String contenido;
 
+    @Column(name = "respuesta")
+    private String respuesta;
+
     @NotNull
     @Column(name = "nivel")
     private Long nivel;

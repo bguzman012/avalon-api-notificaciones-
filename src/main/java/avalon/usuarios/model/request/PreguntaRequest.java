@@ -17,6 +17,7 @@ public class PreguntaRequest {
 	private String contenido;
 	@NotNull
 	private Long nivel;
+	private String respuesta;
 	private Long padreId;
 
 }
