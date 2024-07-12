@@ -1,4 +1,4 @@
-package avalon.usuarios.service.impl;
+package avalon.usuarios.service;
 
 import avalon.usuarios.data.PreguntaRepository;
 import avalon.usuarios.model.pojo.Pregunta;
@@ -18,6 +18,18 @@ public class PreguntaServiceImpl implements PreguntaService {
     public List<Pregunta> obtenerTodasLasPreguntas() {
         return preguntaRepository.findAll();
     }
+
+    @Override
+    public List<Pregunta> obtenerTodasLasPreguntasByPadre(Pregunta padre) {
+        return preguntaRepository.findAllByPadre(padre);
+    }
+
+
+    @Override
+    public List<Pregunta> obtenerTodasLasPreguntasRaiz() {
+        return preguntaRepository.findAllByPadreIsNull();
+    }
+
 
     @Override
     public Pregunta guardarPregunta(Pregunta pregunta) {

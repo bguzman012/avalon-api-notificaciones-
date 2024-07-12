@@ -16,7 +16,7 @@ public class PreguntaRequest {
 	@NotNull
 	private String contenido;
 	@NotNull
-	private Long orden;
-	@NotNull
 	private Long nivel;
+	private Long padreId;
+
 }

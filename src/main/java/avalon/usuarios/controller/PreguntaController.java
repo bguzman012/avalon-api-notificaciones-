@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -30,8 +31,13 @@ public class PreguntaController {
     }
 
     @GetMapping("/preguntas")
-    public ResponseEntity<List<Pregunta>> getPreguntas() {
-        List<Pregunta> preguntaList = service.obtenerTodasLasPreguntas();
+    public ResponseEntity<List<Pregunta>> getPreguntas(@RequestParam(required = false) String raiz) {
+        List<Pregunta> preguntaList;
+        if (raiz == null)
+            preguntaList = service.obtenerTodasLasPreguntas();
+        else
+            preguntaList = service.obtenerTodasLasPreguntasRaiz();
+
 
         if (!preguntaList.isEmpty()) {
             return ResponseEntity.ok(preguntaList);
@@ -39,6 +45,22 @@ public class PreguntaController {
             return ResponseEntity.ok(Collections.emptyList());
         }
     }
+
+    @GetMapping("/padres/{padreId}/preguntas")
+    public ResponseEntity<List<Pregunta>> getPreguntasByPadre(@PathVariable Long padreId) {
+        if (padreId == null)
+            return ResponseEntity.badRequest().build();
+
+        Pregunta padre = this.service.obtenerPreguntaPorId(padreId);
+        List<Pregunta> preguntaList = service.obtenerTodasLasPreguntasByPadre(padre);
+
+        if (!preguntaList.isEmpty()) {
+            return ResponseEntity.ok(preguntaList);
+        } else {
+            return ResponseEntity.ok(Collections.emptyList());
+        }
+    }
+
 
     @GetMapping("/preguntas/{preguntaId}")
     public ResponseEntity<Pregunta> getPregunta(@PathVariable Long preguntaId) {
@@ -71,9 +93,15 @@ public class PreguntaController {
     }
 
     private Pregunta mapToPregunta(PreguntaRequest request, Pregunta preguntaReference) {
+        if (request.getPadreId() != null) {
+            Pregunta padrePregunta = this.service.obtenerPreguntaPorId(request.getPadreId());
+            preguntaReference.setPadre(padrePregunta);
+        }else{
+            preguntaReference.setPadre(null);
+        }
         preguntaReference.setContenido(request.getContenido());
-        preguntaReference.setOrden(request.getOrden());
         preguntaReference.setNivel(request.getNivel());
+
         return preguntaReference;
     }
 

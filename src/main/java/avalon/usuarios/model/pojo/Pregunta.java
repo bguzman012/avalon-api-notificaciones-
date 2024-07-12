@@ -1,6 +1,7 @@
 package avalon.usuarios.model.pojo;
 
 import avalon.usuarios.model.auditing.AuditingData;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -27,19 +28,14 @@ public class Pregunta extends AuditingData {
     private String contenido;
 
     @NotNull
-    @Column(name = "orden")
-    private Long orden;
-
-    @NotNull
     @Column(name = "nivel")
     private Long nivel;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL)
-    private List<Interaccion> preguntaInteraccionList;
+    @ManyToOne
+    @JoinColumn(name = "padre_id")
+    private Pregunta padre;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "respuesta", cascade = CascadeType.ALL)
-    private List<Interaccion> respuestaInteraccionList;
-
+    @OneToMany(mappedBy = "padre", cascade = CascadeType.ALL)
+    private List<Pregunta> hijos;
 }
