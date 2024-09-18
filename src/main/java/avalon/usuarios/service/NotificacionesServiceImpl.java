@@ -62,9 +62,11 @@ public class NotificacionesServiceImpl implements NotificacionesService {
         notificationMessageTopicDTO.setTitle(request.getAsunto());
         notificationMessageTopicDTO.setBody(request.getMensaje());
         notificationMessageTopicDTO.setEmitterUser(request.getUsuarioEnvia());
-        notificationMessageTopicDTO.setTopic(tipoNotificacion.getCodigo());
 
-
+        if (request.getUsuarioAseguradorId() != null && !request.getUsuarioAseguradorId().isEmpty())
+            notificationMessageTopicDTO.setTopic(request.getUsuarioAseguradorId());
+        else
+            notificationMessageTopicDTO.setTopic(tipoNotificacion.getCodigo());
 
         String response = fcmService.sendNotificationByTopic(notificationMessageTopicDTO);
 
